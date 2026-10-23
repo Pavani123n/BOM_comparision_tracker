@@ -51,7 +51,7 @@ bom_file = st.file_uploader(
 
 if master_file and bom_file:
 
-    @st.cache_resource
+   
     def load_excel(file):
         return load_workbook(file)
 
