@@ -89,38 +89,43 @@ if master_file and bom_file:
 
     st.subheader("Column Selection")
 
-    key_column = st.selectbox(
+    with st.form("comparison_form"):
+
+        key_column = st.selectbox(
         "Key Column",
         headers
-    )
+        )
 
-    compare_columns = st.multiselect(
+        compare_columns = st.multiselect(
         "Columns To Compare",
         headers
-    )
+        )
 
-    remark_columns = st.multiselect(
-    "Columns To Show In Remarks",
-    compare_columns,
-    default=compare_columns
-)
+        remark_columns = st.multiselect(
+        "Columns To Show In Remarks",
+        compare_columns,
+        default=compare_columns
+        )
 
-    cpif_filter = st.selectbox(
+        cpif_filter = st.selectbox(
         "CPIF Buy Level Filter",
         ["All", "Y", "N"]
-    )
+        )
 
-    ppif_filter = st.selectbox(
+        ppif_filter = st.selectbox(
         "PPIF Buy Level Filter",
         ["All", "Y", "N"]
-    )
+        )
 
-    # =====================================
-    # COMPARE BUTTON
-    # =====================================
+        compare_button = st.form_submit_button(
+        "Compare BOM"
+        )
 
-    if st.button("Compare BOM"):
+# =====================================
+# COMPARE BUTTON
+# =====================================
 
+    if compare_button:
         master_headers = {}
         cpif_headers = {}
         ppif_headers = {}
